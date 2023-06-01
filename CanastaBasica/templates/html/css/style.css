@@ -864,3 +864,19 @@ input.email_text::placeholder {
 .copyright_text a:hover {
     color: #d89616;
 }
+
+.forms_text {
+    width: 100%;
+    float: left;
+    color: #202123;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.subti_text {
+    width: 100%;
+    float: left;
+    color: #df9911;
+    font-size: 30px;
+    margin: 0px;
+}
