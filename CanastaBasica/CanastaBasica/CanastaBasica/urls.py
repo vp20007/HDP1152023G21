@@ -1,7 +1,7 @@
-"""crud_django URL Configuration
+"""CanastaBasica URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.canasta_basica.views import *
+from django.urls import include
+
 
 urlpatterns = [
-    path('listar_productos', lista_productos, name='lista_productos'),
-    path('listar_productos/eliminar_productos/<int:id_producto>', eliminar_productos, name='eliminar_producto'),
-    path('listar_productos/registrar_producto',registrar_producto,name='registar_producto'),
-
+    path('admin/', admin.site.urls),
+    path('', include('InflacionDeCanasta.urls')),
+    
+    
 ]
