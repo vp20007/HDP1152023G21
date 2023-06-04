@@ -20,6 +20,7 @@ def listaProductos(request):
     return render(request,'html/ListaDeProductosAdmin.html')
 
 def modificarProductos(request):
-    return render(request,'html/modificarProductos.html')
+    return render(request,'html/modificarProducto.html')
+
 def reporteInflacion(request):
     return render(request,'html/Inflacion.html')

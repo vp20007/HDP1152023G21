@@ -82,12 +82,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                     <a class="nav-link" href="index.html">Inicio</a>
+                     <a class="nav-link" href="{% url 'GestionarProductos' %}">Inicio</a>
                   </li>
                </ul>
                {% load static %}
-               <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Iniciar Sesión</span></a></div>
-                <div class="search_icon"><a href="#"><img src="images/user-icon.png"><span class="padding_left_15">Registrarse</span></a></div>
+                <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Cerrar Sesión</span></a></div>
             </div>
          </nav>
       </div>
@@ -236,10 +235,10 @@
          <div class="container">
             <div class="social_icon">
                <ul>
-                  <li><a href="#"><img src="images/fb-icon.png"></a></li>
-                  <li><a href="#"><img src="images/twitter-icon.png"></a></li>
-                  <li><a href="#"><img src="images/linkedin-icon.png"></a></li>
-                  <li><a href="#"><img src="images/instagram-icon.png"></a></li>
+                  <li><a href="#"><img src="{% static 'images/fb-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'images/twitter-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'images/linkedin-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'images/instagram-icon.png' %}"></a></li>
                </ul>
             </div>
          </div>

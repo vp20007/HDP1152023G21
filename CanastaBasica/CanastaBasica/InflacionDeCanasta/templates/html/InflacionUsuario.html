@@ -72,17 +72,19 @@
       <!-- header section start -->
       <div class="header_section">
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="logo" href="index.html"><img src="images/La Canasta Ideal.png" width="80" height="80"></a>
+            <a class="logo" href="index.html"><img src="{% static 'images/La Canasta Ideal.png' %}" width="80" height="80"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                     <a class="nav-link" href="SeleccionarAño.html">Inicio</a>
+                     <a class="nav-link" href="{% url 'SeleccionarAnio' %}">Inicio</a>
                   </li>
                </ul>
             </div>
+            <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Iniciar Sesión</span></a></div>
+                <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Registrarse</span></a></div>
          </nav>
       </div>
       <!-- header section end -->
@@ -232,10 +234,10 @@
          <div class="container">
             <div class="social_icon">
                <ul>
-                  <li><a href="#"><img src="images/fb-icon.png"></a></li>
-                  <li><a href="#"><img src="images/twitter-icon.png"></a></li>
-                  <li><a href="#"><img src="images/linkedin-icon.png"></a></li>
-                  <li><a href="#"><img src="images/instagram-icon.png"></a></li>
+                  <li><a href="#"><img src="{% static 'images/fb-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'images/twitter-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'images/linkedin-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'images/instagram-icon.png' %}"></a></li>
                </ul>
             </div>
          </div>
