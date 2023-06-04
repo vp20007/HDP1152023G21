@@ -1,0 +1,62 @@
+<form style="text-align: center;" action="{%url 'SeleccionarAnio'%}" method="post">
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Iniciar Sesion</title>
+    </head>
+    <body>
+        <!--Para asegurar el formulario-->
+        {% csrf_token %}
+
+        <style>
+        .log-in{
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .log-in input{
+            margin: 5px 0px;
+            height: 35px;
+            padding: 7px;
+        }
+        .log-in button{
+            height: 25px;
+            margin: 5px 0px;
+            background-color: rgb(104, 197, 76);
+            border: none;
+            border-radius: 5px;
+            color: #333;
+        }
+        .log-in label{
+            color: black;
+        }
+
+        </style>
+
+        <div class="log-in">
+
+        <!-- Email  -->
+        <label class="form-label" for="form2Example1">Usuario</label>
+        <input type="text" name="username" id="" placeholder="Escribe aqui..."/>
+
+        <!-- Password  -->
+        <label class="form-label" for="form2Example2">Contrse&#241a</label>
+        <input type="password" name="password" id="" placeholder="Escribe aqui..."/>
+
+        <!-- Submit  -->
+        <button type="submit" >Iniciar Sesion</button>
+
+        </div>
+
+
+
+        </form>
+
+    </body>
+    </html>
+
