@@ -1,24 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Registro de Usuario</title>
-</head>
-<body>
-  <h2>Registro de Usuario</h2>
-  <form action="procesar_registro.php" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required><br><br>
+<style>
+    .registrar_usuario{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .registrar_usuario input{
+    margin: 5px 0px;
+    height: 35px;
+    padding: 7px;
+    font-style: italic;
+  }
+  .registrar_usuario button{
+    height: 25px;
+    margin: 5px 0px;
+    background-color: rgb(15, 167, 53);
+    border: none;
+    border-radius: 5px;
+    color: #333;
+  }
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
+  .registrar_usuario label{
+    color: black;
+    text-align: left;
+    text-transform: uppercase;
+  }
 
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" id="contrasena" name="contrasena" required><br><br>
+  .registrar_usuario select{
+    text-align: center;
+    font-style: italic;
+    margin: 5px 5px;
+    height: 35px;
+  }
+</style>
 
-    <label for="confirmar_contrasena">Confirmar Contraseña:</label>
-    <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required><br><br>
+<h1 style="text-align: center; color: rgb(8, 8, 8);">Registrar Usuario</h1>
+  <form style="text-align: center;" action="{% url 'SeleccionarAnio'%}" method="post">
 
-    <input type="submit" value="Registrarse">
+
+    <!--Para asegurar el formulario-->
+    {% csrf_token %}
+    
+    <div class="registrar_usuario">
+      
+       
+      <!-- usuario_rol -->
+      <!-- Aqui que se haga un select y que extraiga los dos tipos de rol que existen -->
+      <label class="" for="form2Example1">Rol</label>
+      <select name="usuario_rol" id="">
+        <option value="1">Administrador</option>
+        <option value="2">Encargado</option>
+      </select>
+      
+
+      <!-- Nombre empleado  -->
+      <label class="form-label" for="form2Example1" >Nombre</label>
+      <input required type="text" name="empleado_nombre" id="" placeholder="Escribe aqui..."/>
+
+      <!-- apellido empleado  -->
+      <label class="form-label" for="form2Example1">Apellido</label>
+      <input required type="text" name="empleado_apellido" id="" placeholder="Escribe aqui..."/> 
+
+      <!-- telefono empleado  -->
+      <label class="form-label" for="form2Example1">Teléfono</label>
+      <input type="text" name="empleado_telefono" id="" placeholder="Escribe aqui..."/> 
+
+      <!-- usuario_contrasena -->
+      <label class="form-label" for="form2Example2">Contrase&#241a</label>
+      <input required type="password" name="usuario_contrasena" id="" placeholder="Escribe aqui..."/>
+      
+      <!-- correo empleado  -->
+      <label class="form-label" for="empleado_correo">Correo</label>
+      <input type="text" name="empleado_correo" id="empleado_correo" placeholder="Escribe aqui..."/> 
+
+      <!-- Submit  -->
+      <button type="submit" >Agregar</button>
+
+    </div>
+
+
+
   </form>
-</body>
-</html>
