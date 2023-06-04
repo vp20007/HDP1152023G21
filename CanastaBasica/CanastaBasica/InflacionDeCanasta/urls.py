@@ -11,7 +11,7 @@ urlpatterns = [
     path('ReporteInflacion',views.reporteInflacion, name='ReporteInflacion'),
     path('iniciarSesion', views.iniciarSesion, name='iniciarSesion'),
     path('registrarse', views.registrarse, name='registrarse'),
-    path('ListaProductos', views.ListaProductos, name='ListaProductos'),
+    path('lProductos', views.lProductos, name='lProductos'),
     path('AgregarProducto', views.AgregarProducto, name='AgregarProducto'),
 ]
 ]
