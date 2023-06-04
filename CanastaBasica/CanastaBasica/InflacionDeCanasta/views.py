@@ -24,3 +24,9 @@ def modificarProductos(request):
 
 def reporteInflacion(request):
     return render(request,'html/Inflacion.html')
+
+def iniciarSesion (request):
+    return render(request,'html/iniciar_sesion.html')
+
+def registrarse (request):
+    return render(request, 'html/registrarse.html')
