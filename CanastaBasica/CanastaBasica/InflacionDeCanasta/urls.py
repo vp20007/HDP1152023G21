@@ -9,4 +9,7 @@ urlpatterns = [
     path('ListaDeProductosAdmin',views.listaProductos, name='ListaDeProductosAdmin'),
     path('ModificarProductos',views.modificarProductos, name='ModificarProductos'),
     path('ReporteInflacion',views.reporteInflacion, name='ReporteInflacion'),
+    path('iniciarSesion', views.iniciarSesion, name='iniciarSesion'),
+    path('registrarse', views.registrarse, name='registrarse'),
+]
 ]
