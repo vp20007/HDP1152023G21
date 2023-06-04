@@ -12,4 +12,4 @@ urlpatterns = [
     path('iniciarSesion', views.iniciarSesion, name='iniciarSesion'),
     path('registrarse', views.registrarse, name='registrarse'),
 ]
-]
+
