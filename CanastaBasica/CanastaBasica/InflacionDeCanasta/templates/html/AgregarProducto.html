@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agregar Producto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+    }
+    h2 {
+      text-align: center;
+      color: #0000FF;
+      font-weight: bold;
+      font-style: italic;
+    }
+    .form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .form-row label {
+      display: inline-block;
+      width: 120px;
+      font-weight: bold;
+    }
+    .form-row input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .form-row button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #00CC66;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Agregar Producto</h2>
+  <form>
+    <div class="form-row">
+      <label for="nombre">Nombre del Producto</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto">
+    </div>
+    <div class="form-row">
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" name="precio" placeholder="Ingrese el precio del producto">
+    </div>
+    <div class="form-row">
+      <label for="cantidad">Cantidad</label>
+      <input type="number" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad del producto">
+    </div>
+    <div class="form-row">
+      <button type="submit">Agregar Producto</button>
+    </div>
+  </form>
+</body>
+</html>
