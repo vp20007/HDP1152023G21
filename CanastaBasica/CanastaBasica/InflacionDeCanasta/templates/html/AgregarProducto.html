@@ -1,70 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Agregar Producto</title>
+  <title>Ingresar Productos</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    form {
-      margin: 20px auto;
-      max-width: 400px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background-color: #f2f2f2;
-    }
-    h2 {
-      text-align: center;
-      color: #0000FF;
-      font-weight: bold;
-      font-style: italic;
-    }
-    .form-row {
-      display: flex;
-      align-items: center;
+    table {
+      border-collapse: collapse;
+      width: 100%;
       margin-bottom: 20px;
     }
-    .form-row label {
-      display: inline-block;
-      width: 120px;
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #cce6ff;
       font-weight: bold;
     }
-    .form-row input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
     }
-    .form-row button {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #00CC66;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    #grafico-precios {
+      width: 600px;
+      height: 400px;
     }
   </style>
 </head>
 <body>
-  <h2>Agregar Producto</h2>
-  <form>
-    <div class="form-row">
-      <label for="nombre">Nombre del Producto</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto">
-    </div>
-    <div class="form-row">
-      <label for="precio">Precio</label>
-      <input type="number" id="precio" name="precio" placeholder="Ingrese el precio del producto">
-    </div>
-    <div class="form-row">
-      <label for="cantidad">Cantidad</label>
-      <input type="number" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad del producto">
-    </div>
-    <div class="form-row">
-      <button type="submit">Agregar Producto</button>
-    </div>
+  <h2>Ingresar Productos</h2>
+  <form id="formulario-producto">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required><br><br>
+
+    <table id="tabla-productos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Enero</th>
+          <th>Febrero</th>
+          <th>Marzo</th>
+          <th>Abril</th>
+          <th>Mayo</th>
+          <th>Junio</th>
+          <th>Julio</th>
+          <th>Agosto</th>
+          <th>Septiembre</th>
+          <th>Octubre</th>
+          <th>Noviembre</th>
+          <th>Diciembre</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <input type="submit" value="Agregar Producto">
   </form>
+
+  <h2>Variación de Precios por Mes</h2>
+  <div id="grafico-precios"></div>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+    document.getElementById('formulario-producto').addEventListener('submit', agregarProducto);
+
+    function agregarProducto(event) {
+      event.preventDefault();
+
+      var nombre = document.getElementById('nombre').value;
+      var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+      var fila = '<tr>' +
+          '<td>' + nombre + '</td>';
+
+      for (var i = 0; i < meses.length; i++) {
+        var valor = parseFloat(prompt('Ingresa el valor para ' + meses[i]));
+
+        if (isNaN(valor)) {
+          valor = 0;
+        }
+
+        fila += '<td>' + valor + '</td>';
+      }
+
+      fila += '</tr>';
+
+      document.getElementById('tabla-productos').getElementsByTagName('tbody')[0].innerHTML += fila;
+      document.getElementById('formulario-producto').reset();
+
+      generarGraficoPrecios();
+    }
+
+    function generarGraficoPrecios() {
+      var tablaProductos = document.getElementById('tabla-productos');
+      var filasProductos = tablaProductos.getElementsByTagName('tr');
+
+      var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+      var datos = [];
+
+      for (var i = 1; i < filasProductos.length; i++) {
+        var fila = filasProductos[i];
+        var celdas = fila.getElementsByTagName('td');
+
+        var nombre = celdas[0].innerHTML;
+        var precios = [];
+
+        for (var j = 1; j < celdas.length; j++) {
+          precios.push(parseFloat(celdas[j].innerHTML));
+        }
+
+        datos.push({
+          x: meses,
+          y: precios,
+          type: 'scatter',
+          mode: 'lines+markers',
+          name: nombre
+        });
+      }
+
+      var layout = {
+        title: 'Variación de Precios por Mes',
+        xaxis: {
+          title: 'Meses'
+        },
+        yaxis: {
+          title: 'Precio'
+        }
+      };
+
+      Plotly.newPlot('grafico-precios', datos, layout);
+    }
+  </script>
 </body>
 </html>
