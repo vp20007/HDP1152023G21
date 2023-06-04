@@ -31,8 +31,8 @@ def iniciarSesion (request):
 def registrarse (request):
     return render(request, 'html/registrarse.html')
 
-def ListaProductos (request):
-    return render(request, 'html/ListaProductos.html')
+def lProductos (request):
+    return render(request, 'html/lProductos.html')
 
 def AgregarProducto (request):
     return render(request, 'html/AgregarProducto.html')
