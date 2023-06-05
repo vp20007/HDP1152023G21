@@ -1,85 +1,86 @@
-<style>
-    .registrar_usuario{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    padding: 15px;
-    border-radius: 5px;
-  }
-  .registrar_usuario input{
-    margin: 5px 0px;
-    height: 35px;
-    padding: 7px;
-    font-style: italic;
-  }
-  .registrar_usuario button{
-    height: 25px;
-    margin: 5px 0px;
-    background-color: rgb(15, 167, 53);
-    border: none;
-    border-radius: 5px;
-    color: #333;
-  }
-
-  .registrar_usuario label{
-    color: black;
-    text-align: left;
-    text-transform: uppercase;
-  }
-
-  .registrar_usuario select{
-    text-align: center;
-    font-style: italic;
-    margin: 5px 5px;
-    height: 35px;
-  }
-</style>
-
-<h1 style="text-align: center; color: rgb(8, 8, 8);">Registrar Usuario</h1>
-  <form style="text-align: center;" action="{% url 'SeleccionarAnio'%}" method="post">
-
-
-    <!--Para asegurar el formulario-->
-    {% csrf_token %}
-    
-    <div class="registrar_usuario">
-      
-       
-      <!-- usuario_rol -->
-      <!-- Aqui que se haga un select y que extraiga los dos tipos de rol que existen -->
-      <label class="" for="form2Example1">Rol</label>
-      <select name="usuario_rol" id="">
-        <option value="1">Administrador</option>
-        <option value="2">Encargado</option>
-      </select>
-      
-
-      <!-- Nombre empleado  -->
-      <label class="form-label" for="form2Example1" >Nombre</label>
-      <input required type="text" name="empleado_nombre" id="" placeholder="Escribe aqui..."/>
-
-      <!-- apellido empleado  -->
-      <label class="form-label" for="form2Example1">Apellido</label>
-      <input required type="text" name="empleado_apellido" id="" placeholder="Escribe aqui..."/> 
-
-      <!-- telefono empleado  -->
-      <label class="form-label" for="form2Example1">Teléfono</label>
-      <input type="text" name="empleado_telefono" id="" placeholder="Escribe aqui..."/> 
-
-      <!-- usuario_contrasena -->
-      <label class="form-label" for="form2Example2">Contrase&#241a</label>
-      <input required type="password" name="usuario_contrasena" id="" placeholder="Escribe aqui..."/>
-      
-      <!-- correo empleado  -->
-      <label class="form-label" for="empleado_correo">Correo</label>
-      <input type="text" name="empleado_correo" id="empleado_correo" placeholder="Escribe aqui..."/> 
-
-      <!-- Submit  -->
-      <button type="submit" >Agregar</button>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Usuario</title>
+    <style>
+        body {
+            background-color: #e1f0ff;
+            font-family: 'Helvetica', sans-serif;
+        }
+        
+        .register-form {
+            margin: 100px auto;
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .register-form h1 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+        }
+        
+        .register-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .register-form input[type="text"],
+        .register-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-style: italic;
+        }
+        
+        .register-form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .register-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-form">
+        <h1>Registrar Usuario</h1>
+        <form action="{% url 'SeleccionarAnio' %}" method="post">
+            {% csrf_token %}
+            
+            <label for="empleado_nombre">Nombre</label>
+            <input type="text" id="empleado_nombre" name="empleado_nombre" placeholder="Ingrese su nombre" required>
+            
+            <label for="empleado_correo">Correo Electrónico</label>
+            <input type="text" id="empleado_correo" name="empleado_correo" placeholder="Ingrese su correo electrónico" required>
+            
+            <label for="usuario_contrasena">Contraseña</label>
+            <input type="password" id="usuario_contrasena" name="usuario_contrasena" placeholder="Ingrese su contraseña" required>
+            
+            <label for="confirmar_contrasena">Confirmar Contraseña</label>
+            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirme su contraseña" required>
+            
+            <button type="submit">Agregar</button>
+        </form>
     </div>
-
-
-
-  </form>
+</body>
+</html>
