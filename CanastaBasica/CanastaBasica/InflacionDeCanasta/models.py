@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
 
 
 # Modelo Administrador
@@ -9,7 +11,7 @@ class Administrador(models.Model):
     contra_admin = models.CharField(max_length=50)
     
     class Meta:
-        db_table = 'administrador'
+        db_table = 'T_administrador'
         
     def __str__(self):
         return self.nombre_admin
@@ -20,14 +22,12 @@ class Mes(models.Model):
     id_Mes = models.AutoField(primary_key=True)
     nombre_mes = models.CharField(max_length=50)
     indice_precio = models.DecimalField(max_digits=10, decimal_places=2)
-    id_Anio = models.ForeignKey('Anio', on_delete=models.PROTECT,
-                                        db_column='id_Anio')
+    
     
     class Meta:
-        db_table = 'mes'
+        db_table = 'T_mes'
 
-    def __str__(self):
-        return self.nombre_mes
+    
 
 
 # Modelo Producto
@@ -39,10 +39,8 @@ class Producto(models.Model):
                                         db_column='id_Mes')
     
     class Meta:
-        db_table = 'producto'
+        db_table = 'T_producto'
 
-    def __str__(self):
-        return self.nombre_producto
     
 # Modelo Anio
 class Anio(models.Model):
@@ -52,10 +50,9 @@ class Anio(models.Model):
                                         db_column='id_Producto')
     
     class Meta:
-        db_table = 'ano'
+        db_table = 'T_ano'
 
-    def __str__(self):
-        return self.numero_Anio
+    
     
 # Modelo Gasto
 class Gasto(models.Model):
@@ -66,10 +63,9 @@ class Gasto(models.Model):
                                         db_column='id_Mes')
     
     class Meta:
-        db_table = 'gasto'
+        db_table = 'T_gasto'
 
-    def __str__(self):
-        return self.gasto_mensual
+    
 
 # Modelo Inflacion   
 class Inflacion(models.Model):
@@ -79,10 +75,9 @@ class Inflacion(models.Model):
                                         db_column='id_Gasto')
     
     class Meta:
-        db_table = 'inflacion'
+        db_table = 'T_inflacion'
 
-    def __str__(self):
-        return self.inflacion
+    
 
 # Modelo CanastaBasica
 class CanastaBasica(models.Model):
@@ -93,11 +88,9 @@ class CanastaBasica(models.Model):
                                         db_column='id_Anio')
     
     class Meta:
-        db_table = 'canastabasica'
+        db_table = 'T_canastabasica'
 
-    def __str__(self):
-        return self.id_CanastaBasica
-
+    
 
 
 

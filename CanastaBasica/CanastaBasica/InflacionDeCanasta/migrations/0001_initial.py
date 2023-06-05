@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('contra_admin', models.CharField(max_length=50)),
             ],
             options={
-                'db_table': 'administrador',
+                'db_table': 'T_administrador',
             },
         ),
         migrations.CreateModel(
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('numero_Anio', models.IntegerField(max_length=10)),
             ],
             options={
-                'db_table': 'ano',
+                'db_table': 'T_ano',
             },
         ),
         migrations.CreateModel(
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('diferencia', models.DecimalField(decimal_places=2, max_digits=10)),
             ],
             options={
-                'db_table': 'gasto',
+                'db_table': 'T_gasto',
             },
         ),
         migrations.CreateModel(
@@ -51,10 +51,10 @@ class Migration(migrations.Migration):
                 ('id_Mes', models.AutoField(primary_key=True, serialize=False)),
                 ('nombre_mes', models.CharField(max_length=50)),
                 ('indice_precio', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('id_Anio', models.ForeignKey(db_column='id_Anio', on_delete=django.db.models.deletion.PROTECT, to='InflacionDeCanasta.anio')),
+              
             ],
             options={
-                'db_table': 'mes',
+                'db_table': 'T_mes',
             },
         ),
         migrations.CreateModel(
@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
                 ('id_Mes', models.ForeignKey(db_column='id_Mes', on_delete=django.db.models.deletion.PROTECT, to='InflacionDeCanasta.mes')),
             ],
             options={
-                'db_table': 'producto',
+                'db_table': 'T_producto',
             },
         ),
         migrations.CreateModel(
@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
                 ('id_Gasto', models.ForeignKey(db_column='id_Gasto', on_delete=django.db.models.deletion.PROTECT, to='InflacionDeCanasta.gasto')),
             ],
             options={
-                'db_table': 'inflacion',
+                'db_table': 'T_inflacion',
             },
         ),
         migrations.AddField(
@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
                 ('id_Anio', models.ForeignKey(db_column='id_Anio', on_delete=django.db.models.deletion.PROTECT, to='InflacionDeCanasta.anio')),
             ],
             options={
-                'db_table': 'canastabasica',
+                'db_table': 'T_canastabasica',
             },
         ),
         migrations.AddField(
