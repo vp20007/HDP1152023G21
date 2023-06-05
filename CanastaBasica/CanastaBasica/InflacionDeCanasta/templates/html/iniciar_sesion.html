@@ -1,62 +1,72 @@
-<form style="text-align: center;" action="{%url 'SeleccionarAnio'%}" method="post">
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Iniciar Sesion</title>
-    </head>
-    <body>
-        <!--Para asegurar el formulario-->
-        {% csrf_token %}
-
-        <style>
-        .log-in{
-            margin: auto;
-            display: flex;
-            flex-direction: column;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <style>
+        body {
+            background-color: #212121;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .login-form {
+            margin: 100px auto;
             width: 300px;
-            padding: 15px;
+            padding: 20px;
+            background-color: #333;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .log-in input{
-            margin: 5px 0px;
-            height: 35px;
-            padding: 7px;
+        
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #fff;
         }
-        .log-in button{
-            height: 25px;
-            margin: 5px 0px;
-            background-color: rgb(104, 197, 76);
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #68c54c;
             border: none;
-            border-radius: 5px;
-            color: #333;
+            border-radius: 3px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
         }
-        .log-in label{
-            color: black;
+        
+        .login-form button:hover {
+            background-color: #5aa843;
         }
-
-        </style>
-
-        <div class="log-in">
-
-        <!-- Email  -->
-        <label class="form-label" for="form2Example1">Usuario</label>
-        <input type="text" name="username" id="" placeholder="Escribe aqui..."/>
-
-        <!-- Password  -->
-        <label class="form-label" for="form2Example2">Contrse&#241a</label>
-        <input type="password" name="password" id="" placeholder="Escribe aqui..."/>
-
-        <!-- Submit  -->
-        <button type="submit" >Iniciar Sesion</button>
-
-        </div>
-
-
-
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Iniciar Sesión</h2>
+        <form action="{% url 'SeleccionarAnio' %}" method="post">
+            {% csrf_token %}
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
         </form>
-
-    </body>
-    </html>
+    </div>
+</body>
+</html>
 
