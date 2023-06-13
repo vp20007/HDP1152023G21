@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{% static 'js/popper.min.js' %}">
     <link rel="stylesheet" href="{% static 'js/slider-setting.js' %}">
     <html>
+         
         <head>
             <!-- basic -->
             <meta charset="utf-8">
@@ -72,13 +73,13 @@
             <!-- header section start -->
                   <div class="header_section">
                      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="logo" href="index.html"><img src="{% static 'images/La Canasta Ideal.png' %}" width="100" height="100"></a>
+                        <a class="logo"><img src="{% static 'images/La Canasta Ideal.png' %}" width="100" height="100"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-                           <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Iniciar Sesión</span></a></div>
-                           <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Registrarse</span></a></div>
+                           <div class="search_icon"><a href="{% url 'iniciarSesion' %}"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Iniciar Sesión</span></a></div>
+                           <div class="search_icon"><a href="{% url 'registrarse' %}"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Registrarse</span></a></div>
                         </div>   
                      </nav>
                   </div>
@@ -99,7 +100,7 @@
               </select>
             </center>
             <br> <!-- Salto de línea-->
-            <center><button type="button">Aceptar</button></center>
+            <center><div class="paly_bt"><a href="{% url 'lProductos' %}">Aceptar</a></div></center>
           <!-- footer  section start -->
               <BR><BR><BR><BR>
               <div class="footer_section layout_padding">

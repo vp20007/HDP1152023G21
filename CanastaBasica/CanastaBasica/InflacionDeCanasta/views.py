@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import Http404
-
+from .models import *
 
 # Create your views here.
 def inicio(request):
@@ -10,7 +10,9 @@ def inicio(request):
 
 def inflacionUsuario(request):
     return render(request,'html/InflacionUsuario.html')
+
 def seleccionarAnio(request):
+   
     return render(request,'html/SeleccionarAño.html')
 
 def gestionProductos(request):

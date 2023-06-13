@@ -22,11 +22,12 @@ class Mes(models.Model):
     id_Mes = models.AutoField(primary_key=True)
     nombre_mes = models.CharField(max_length=50)
     indice_precio = models.DecimalField(max_digits=10, decimal_places=2)
-    
+    id_Anio=models.ForeignKey('Anio', on_delete=models.PROTECT, null=True, blank=True, db_column='id_Anio')
     
     class Meta:
         db_table = 'T_mes'
-
+    
+    
     
 
 
@@ -41,6 +42,8 @@ class Producto(models.Model):
     class Meta:
         db_table = 'T_producto'
 
+    def __str__(self):
+        return self.nombre_producto
     
 # Modelo Anio
 class Anio(models.Model):
@@ -52,7 +55,8 @@ class Anio(models.Model):
     class Meta:
         db_table = 'T_ano'
 
-    
+    def __str__(self):
+        return self.numero_Anio
     
 # Modelo Gasto
 class Gasto(models.Model):
@@ -65,7 +69,8 @@ class Gasto(models.Model):
     class Meta:
         db_table = 'T_gasto'
 
-    
+    def __str__(self):
+        return self.id_Gasto
 
 # Modelo Inflacion   
 class Inflacion(models.Model):
@@ -77,7 +82,8 @@ class Inflacion(models.Model):
     class Meta:
         db_table = 'T_inflacion'
 
-    
+    def __str__(self):
+        return self.id_inflacion
 
 # Modelo CanastaBasica
 class CanastaBasica(models.Model):
@@ -90,7 +96,8 @@ class CanastaBasica(models.Model):
     class Meta:
         db_table = 'T_canastabasica'
 
-    
+    def __str__(self):
+        return self.id_CanastaBasica
 
 
 
