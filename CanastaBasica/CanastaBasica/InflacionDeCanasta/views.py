@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import Http404
 from .models import *
 
+
 # Create your views here.
+
 def inicio(request):
     return HttpResponse("<h1>Hola</h1>")
 
@@ -12,7 +16,6 @@ def inflacionUsuario(request):
     return render(request,'html/InflacionUsuario.html')
 
 def seleccionarAnio(request):
-   
     return render(request,'html/SeleccionarAño.html')
 
 def gestionProductos(request):
@@ -37,4 +40,8 @@ def lProductos (request):
     return render(request, 'html/lProductos.html')
 
 def AgregarProducto (request):
-    return render(request, 'html/AgregarProducto.html')
+    producto = Producto
+    mes = Mes
+    return render(request,'html/AgregarProducto.html', {'producto': producto, 'mes': mes})
+
+

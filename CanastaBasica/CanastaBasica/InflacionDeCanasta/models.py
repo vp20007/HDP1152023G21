@@ -35,7 +35,7 @@ class Mes(models.Model):
 class Producto(models.Model):
     id_Producto = models.AutoField(primary_key=True)
     nombre_producto = models.CharField(max_length=50)
-    gramos_persona = models.DecimalField(max_digits=10, decimal_places=2)
+    gramos_persona = models.DecimalField(max_digits=10, decimal_places=2,null=True)
     id_Mes = models.ForeignKey(Mes, on_delete=models.PROTECT,
                                         db_column='id_Mes')
     

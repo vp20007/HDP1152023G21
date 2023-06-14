@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <title>Ingresar Productos</title>
@@ -43,6 +44,7 @@
       <thead>
         <tr>
           <th>Nombre</th>
+          <th>Gramos</th>
           <th>Enero</th>
           <th>Febrero</th>
           <th>Marzo</th>
@@ -72,12 +74,17 @@
 
     function agregarProducto(event) {
       event.preventDefault();
-
+      
       var nombre = document.getElementById('nombre').value;
-      var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+      var gramos = parseFloat(prompt('Gramos'));
+   
+      
+      
 
+      var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
       var fila = '<tr>' +
           '<td>' + nombre + '</td>';
+          fila +='<td>' + gramos + '</td>';
 
       for (var i = 0; i < meses.length; i++) {
         var valor = parseFloat(prompt('Ingresa el valor para ' + meses[i]));
@@ -87,6 +94,7 @@
         }
 
         fila += '<td>' + valor + '</td>';
+
       }
 
       fila += '</tr>';
@@ -105,7 +113,7 @@
 
       var datos = [];
 
-      for (var i = 1; i < filasProductos.length; i++) {
+      for (var i = 2; i < filasProductos.length; i++) {
         var fila = filasProductos[i];
         var celdas = fila.getElementsByTagName('td');
 
