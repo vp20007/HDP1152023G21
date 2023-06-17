@@ -24,8 +24,10 @@ def gestionProductos(request):
 def listaProductos(request):
     return render(request,'html/ListaDeProductosAdmin.html')
 
-def modificarProductos(request):
-    return render(request,'html/modificarProducto.html')
+def modificarProductos(request,id):
+    producto=Producto.objects.get(id_Producto=id)
+    mes=Mes.MultipleObjectsReturned()
+    return render(request,'html/modificarProducto.html', context={'producto': producto})
 
 def reporteInflacion(request):
     return render(request,'html/Inflacion.html')
