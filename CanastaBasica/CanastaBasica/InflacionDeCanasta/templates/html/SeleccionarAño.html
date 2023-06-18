@@ -80,7 +80,6 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
                            <div class="search_icon"><a href="{% url 'iniciarSesion' %}"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Iniciar Sesión</span></a></div>
                            <div class="search_icon"><a href="{% url 'registrarse' %}"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Registrarse</span></a></div>
-                        </div>   
                      </nav>
                   </div>
             <!-- header section end -->
@@ -89,20 +88,35 @@
             <!--Cuerpo del objeto selector-->
 
             <center>
-              <label for="opciones">Lista de años:</label>
-              <select id="opciones">
-                <option value="opcion1">Seleccionar un año</option>
-                <option value="opcion2">2018</option>
-                <option value="opcion3" ondblclick="{URL:'lProductos' }">2019</option>
-                <option value="opcion4">2020</option>
-                <option value="opcion5">2021</option>
-                <option value="opcion6">2022</option>
+              <label>Lista de años:</label>
+              <select id="htmlSelect">
+                <option disabled selected="">Seleccionar un año</option>
+                <option value="lProductos18">2018</option>
+                <option value="lProductos19">2019</option>
+                <option value="lProductos20">2020</option>
+                <option value="lProductos21">2021</option>
+                <option value="lProductos22">2022</option>
                </select>
                
                
             </center>
+            <button onclick="redireccionar()">Aceptar</button> <!--ayuda, como hago que esto se meta en el boton naranja?-->
+            <!--el script que era para cambiar de html al seleccionar en la lista desplegable que podria ir en un js
+            pero no se como-->
+            <script>
+            function redireccionar() {
+                var selectElement = document.getElementById('htmlSelect');
+                var selectedValue = selectElement.value;
+                if (selectedValue !== '') {
+                    var url = selectedValue;
+                    // Aquí puedes hacer lo que necesites con la variable 'url',
+                    // como redireccionar a la página seleccionada:
+                    window.location.href = url;
+                }
+            }
+            </script>
             <br> <!-- Salto de línea-->
-            <center><div class="paly_bt"><a href="{% url 'lProductos' %}">Aceptar</a></div></center>
+            <center><div class="paly_bt"><a href="{% url 'lProductos22' %}">Aceptar</a></div></center><!--habia que moverle aqui para que funcionara-->
           <!-- footer  section start -->
               <BR><BR><BR><BR>
               <div class="footer_section layout_padding">
