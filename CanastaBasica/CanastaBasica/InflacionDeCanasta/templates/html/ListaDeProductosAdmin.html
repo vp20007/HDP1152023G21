@@ -89,20 +89,60 @@
       </div>
    <!-- header section end -->
    <!--inicio del cuerpo que se muestra-->
-
-
+   <form method="post">   
+   {% block content %}
+   {% csrf_token %}
    <label class="subti_text">ZONA URBANA</label><br><br>
    <label class="forms_text" >Tipo de Zona</label>
-   <input required type="text"><br><br>
+   {{formU.tipo_de_zona}}<br><br>
    <label class="forms_text" >Integrantes por Familia</label>
-   <input required type="text">
+   {{formU.integrantes_por_familia}}
+   <br>
+   <div align="Right" class="paly_bt"><a href="{% url 'AgregarProducto' %}">Añadir Articulo</a></div>
+   <div class="col-sm-6 col-lg-4" ALIGN=CENTER></div>
+   <br><br><br>
+      <br><br><table border="1%">
+         <TR align="CENTER" WIDTH="100%">
+            <TH WIDTH="100%">Articulo</TH>
+            <TH WIDTH="200%" HEIGHT="50">Gramos</TH>
+            <TH WIDTH="450%">ENERO</TH>
+            <TH WIDTH="450%">FEBRERO</TH>
+            <TH WIDTH="450%">MARZO</TH>
+            <TH WIDTH="450%">ABRIL</TH>
+            <TH WIDTH="450%">MAYO</TH>
+            <TH WIDTH="450%">JUNIO</TH>
+            <TH WIDTH="450%">JULIO</TH>
+            <TH WIDTH="450%">AGOSTO</TH>
+            <TH WIDTH="450%">SEPTIEMBRE</TH>
+            <TH WIDTH="450%">OCTUBRE</TH>
+            <TH WIDTH="450%">NOVIEMBRE</TH>
+            <TH WIDTH="450%">DICIEMBRE</TH>
+            <TH WIDTH="550%">ACCIONES</TH>
+         </TR>
+         {% for producto in listProdU%}
+         <TR>
+            <TD>{{producto.nombre_producto}}</TD>
+            <TD>{{producto.gramos_persona}}</TD>
+            {% for mes in listaMesesU%}
+                  <TD>{{mes.indice_precio}}</TD>
+            {% endfor %}
+            <TD align="CENTER"><a href="{% url 'ModificarProductos' id=producto.id_Producto %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'Eliminar' id=producto.id_Producto %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
+         </TR>
+         {% endfor %}
+      </table>
+   </div>
+   <br><br><br><label class="subti_text">ZONA RURAL</label><br><br>
+   <label class="forms_text" >Tipo de Zona</label>
+   {{formR.tipo_de_zona}}<br><br>
+   <label class="forms_text" >Integrantes por Familia</label>
+   {{formR.integrantes_por_familia}}
    <br>
    <div align="Right" class="paly_bt"><a href="{% url 'AgregarProducto' %}">Añadir Articulo</a></div>
    <br><br><br>
       <br><br><table border="1%">
          <TR align="CENTER" WIDTH="100%">
             <TH WIDTH="100%">Articulo</TH>
-            <TH WIDTH="200%" HEIGHT="50">Gramos por persona</TH>
+            <TH WIDTH="200%" HEIGHT="50">Gramos</TH>
             <TH WIDTH="450%">ENERO</TH>
             <TH WIDTH="450%">FEBRERO</TH>
             <TH WIDTH="450%">MARZO</TH>
@@ -117,268 +157,26 @@
             <TH WIDTH="450%">DICIEMBRE</TH>
             <TH WIDTH="550%">ACCIONES</TH>
          </TR>
+         {% for producto in listProdR%}
          <TR>
-            <TD>Frijoles</TD>
-            <TD>0.8</TD>
-            <TD>0.90</TD>
-            <TD>0.95</TD>
-            <TD>1.00</TD>
-            <TD>1.05</TD>
-            <TD>1.10</TD>
-            <TD>1.15</TD>
-            <TD>1.20</TD>
-            <TD>1.25</TD>
-            <TD>1.30</TD>
-            <TD>1.35</TD>
-            <TD>1.40</TD>
-            <TD>1.45</TD>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
+            <TD>{{producto.nombre_producto}}</TD>
+            <TD>{{producto.gramos_persona}}</TD>
+            {% for mes in listaMesesR%}
+                  <TD>{{mes.indice_precio}}</TD>
+            {% endfor %}
+            <TD align="CENTER"><a href="{% url 'ModificarProductos' id=producto.id_Producto %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'Eliminar' id=producto.id_Producto %}" ><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
          </TR>
-         <TR>
-            <TD>Arroz</TD>
-            <TD>0.8</TD>
-            <td>$0.80</td>
-            <td>$0.85</td>
-            <td>$0.90</td>
-            <td>$0.95</td>
-            <td>$1.00</td>
-            <td>$1.05</td>
-            <td>$1.10</td>
-            <td>$1.15</td>
-            <td>$1.20</td>
-            <td>$1.25</td>
-            <td>$1.30</td>
-            <td>$1.35</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <TD>Carne</TD>
-            <td style="border: 1px solid black;">$4.80</td>
-            <td>$3.85</td>
-            <td>$4.90</td>
-            <td>$4.95</td>
-            <td>$5.00</td>
-            <td>$4.05</td>
-            <td>$5.10</td>
-            <td>$5.15</td>
-            <td>$4.20</td>
-            <td>$3.25</td>
-            <td>$5.30</td>
-            <td>$1.35</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <TD>Carne</TD>
-            <td>4.80</td>
-            <td>3.85</td>
-            <td>4.90</td>
-            <td>4.95</td>
-            <td>5.00</td>
-            <td>4.05</td>
-            <td>5.10</td>
-            <td>5.15</td>
-            <td>4.20</td>
-            <td>3.25</td>
-            <td>5.30</td>
-            <td>1.35</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Maíz</td>
-            <td>1.25</td>
-            <td>1.30</td>
-            <td>1.35</td>
-            <td>1.40</td>
-            <td>1.45</td>
-            <td>1.50</td>
-            <td>1.55</td>
-            <td>1.60</td>
-            <td>1.65</td>
-            <td>1.70</td>
-            <td>1.75</td>
-            <td>1.80</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Pan</td>
-            <td>0.50</td>
-            <td>0.55</td>
-            <td>0.60</td>
-            <td>0.65</td>
-            <td>0.70</td>
-            <td>0.75</td>
-            <td>0.80</td>
-            <td>0.85</td>
-            <td>0.90</td>
-            <td>0.95</td>
-            <td>1.00</td>
-            <td>1.05</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Aceite vegetal</td>
-            <td>2.50</td>
-            <td>2.55</td>
-            <td>2.60</td>
-            <td>2.65</td>
-            <td>2.70</td>
-            <td>2.75</td>
-            <td>2.80</td>
-            <td>2.85</td>
-            <td>2.90</td>
-            <td>2.95</td>
-            <td>3.00</td>
-            <td>3.05</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Frutas</td>
-            <td>1.50</td>
-            <td>1.55</td>
-            <td>1.60</td>
-            <td>1.65</td>
-            <td>1.70</td>
-            <td>1.75</td>
-            <td>1.80</td>
-            <td>1.85</td>
-            <td>1.90</td>
-            <td>1.95</td>
-            <td>2.00</td>
-            <td>2.05</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Verduras</td>
-            <td>0.80</td>
-            <td>0.85</td>
-            <td>0.90</td>
-            <td>0.95</td>
-            <td>1.00</td>
-            <td>1.05</td>
-            <td>1.10</td>
-            <td>1.15</td>
-            <td>1.20</td>
-            <td>1.25</td>
-            <td>1.30</td>
-            <td>1.35</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Tortillas</td>
-            <td>0.15</td>
-            <td>0.16</td>
-            <td>0.17</td>
-            <td>0.18</td>
-            <td>0.19</td>
-            <td>0.20</td>
-            <td>0.21</td>
-            <td>0.22</td>
-            <td>0.23</td>
-            <td>0.24</td>
-            <td>0.25</td>
-            <td>0.26</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Leche</td>
-            <td>1.50</td>
-            <td>1.55</td>
-            <td>1.60</td>
-            <td>1.65</td>
-            <td>1.70</td>
-            <td>1.75</td>
-            <td>1.80</td>
-            <td>1.85</td>
-            <td>1.90</td>
-            <td>1.95</td>
-            <td>2.00</td>
-            <td>2.05</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Queso</td>
-            <td>2.00</td>
-            <td>2.05</td>
-            <td>2.10</td>
-            <td>2.15</td>
-            <td>2.20</td>
-            <td>2.25</td>
-            <td>2.30</td>
-            <td>2.35</td>
-            <td>2.40</td>
-            <td>2.45</td>
-            <td>2.50</td>
-            <td>2.55</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-         <TR>
-            <td>Huevos</td>
-            <td>1.50</td>
-            <td>1.50</td>
-            <td>1.55</td>
-            <td>1.60</td>
-            <td>1.65</td>
-            <td>1.70</td>
-            <td>1.75</td>
-            <td>1.80</td>
-            <td>1.85</td>
-            <td>1.90</td>
-            <td>1.95</td>
-            <td>2.00</td>
-            <td>2.05</td>
-            <TD align="CENTER"><a href="{% url 'ModificarProductos' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
+         {% endfor %}
+         
       </table>
-   <br><br><br><label class="subti_text">ZONA RURAL</label><br><br>
-   <label class="forms_text" >Tipo de Zona</label>
-   <input required type="text"><br><br>
-   <label class="forms_text" >Integrantes por Familia</label>
-   <input required type="text">
-   <br>
-   <div align="Right" class="paly_bt"><a href="#">Añadir Articulo</a></div>
-   <br><br><br>
-      <br><br><table border="1%">
-         <TR align="CENTER" WIDTH="100%">
-            <TH WIDTH="100%">Articulo</TH>
-            <TH WIDTH="200%" HEIGHT="50">Gramos por persona</TH>
-            <TH WIDTH="450%">ENERO</TH>
-            <TH WIDTH="450%">FEBRERO</TH>
-            <TH WIDTH="450%">MARZO</TH>
-            <TH WIDTH="450%">ABRIL</TH>
-            <TH WIDTH="450%">MAYO</TH>
-            <TH WIDTH="450%">JUNIO</TH>
-            <TH WIDTH="450%">JULIO</TH>
-            <TH WIDTH="450%">AGOSTO</TH>
-            <TH WIDTH="450%">SEPTIEMBRE</TH>
-            <TH WIDTH="450%">OCTUBRE</TH>
-            <TH WIDTH="450%">NOVIEMBRE</TH>
-            <TH WIDTH="450%">DICIEMBRE</TH>
-            <TH WIDTH="550%">ACCIONES</TH>
-         </TR>
-         <TR>
-            <TD>Pan Frances</TD>
-            <TD>40</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD>0</TD>
-            <TD align="CENTER"><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(124, 218, 124);">Modificar</button></a><br><br><a href="{% url 'SeleccionarAnio' %}"><button type="button" style="background-color: rgb(241, 131, 131);">Eliminar</button></a></TD>
-         </TR>
-      </table>
-   <br><br><br>
-   <div class="paly_bt"><a href="#">Inflación</a></div>
+       <br><br><br>
+      <div class="paly_bt"><a href="{% url 'ReporteInflacion' %}">Inflación</a></div>
 
-   <div class="paly_bt"><a href="#">Guardar</a></div><br><br><br>
-   <br><br><br>
-   
+      <div class="paly_bt"><a href="{% url 'GestionarProductos' %}" type="submit">Guardar</a></div><br><br><br>
+      <br><br><br>
+      </form> 
+   {% endblock %}
+  
    <!--fin del cuerpo que se muestra-->
    <!-- footer  section start -->
       <div class="footer_section layout_padding">

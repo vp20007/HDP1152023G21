@@ -59,7 +59,8 @@ class Anio(models.Model):
         db_table = 'anio'
 
     def __str__(self):
-        return self.numero_Anio
+        return self.id_Anio
+    
     
 # Modelo Gasto
 class Gasto(models.Model):

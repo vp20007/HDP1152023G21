@@ -1,5 +1,98 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+{% load static %}
+<!--para los de css-->
+<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/default-skin.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+<!--para los de js-->
+<link rel="stylesheet" href="{% static 'js/bootstrap.bundle.js' %}">
+<link rel="stylesheet" href="{% static 'js/bootstrap.bundle.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/bootstrap.js' %}">
+<link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/custom.js' %}">
+<link rel="stylesheet" href="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/jquery.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/jquery.validate.js' %}">
+<link rel="stylesheet" href="{% static 'js/jquery-3.0.0.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/modernizer.js' %}">
+<link rel="stylesheet" href="{% static 'js/plugin.js' %}">
+<link rel="stylesheet" href="{% static 'js/popper.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/slider-setting.js' %}">
+
+<html lang="en">
+   <head>
+      {% load static %}
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Agregar Producto</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <!-- Responsive-->
+
+      <link rel="stylesheet" href="static/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- owl stylesheets -->
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <!-- header section start -->
+      <div class="header_section">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="logo" href="index.html"><img src="{% static 'images/La Canasta Ideal.png' %}" width="80" height="80"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="{% url 'GestionarProductos' %}">Inicio</a>
+                  </li>
+               </ul>
+               {% load static %}
+                <div class="search_icon"><a href="#"><img src="{% static 'images/user-icon.png' %}"><span class="padding_left_15">Cerrar Sesión</span></a></div>
+            </div>
+         </nav>
+      </div>
+      <!-- header section end -->
+      <!-- arrival section start -->
 <html>
 <head>
   <title>Ingresar Productos</title>
@@ -64,10 +157,11 @@
 
     <input type="submit" value="Agregar Producto">
   </form>
-
+{% block content %}
+  {% csrf_token %}
   <h2>Variación de Precios por Mes</h2>
   <div id="grafico-precios"></div>
-
+  
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
     document.getElementById('formulario-producto').addEventListener('submit', agregarProducto);
@@ -113,7 +207,7 @@
 
       var datos = [];
 
-      for (var i = 2; i < filasProductos.length; i++) {
+      for (var i = 1; i < filasProductos.length; i++) {
         var fila = filasProductos[i];
         var celdas = fila.getElementsByTagName('td');
 
@@ -146,5 +240,7 @@
       Plotly.newPlot('grafico-precios', datos, layout);
     }
   </script>
+   <div class="paly_bt"><a href="{% url 'ListaDeProductosAdmin' anio=2018 %}">Guardar</a></div>
+{% endblock %}
 </body>
 </html>

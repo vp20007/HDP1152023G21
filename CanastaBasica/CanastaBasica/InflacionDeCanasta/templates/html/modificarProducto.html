@@ -92,51 +92,36 @@
       <div class="arrival_section layout_padding">
          <div class="container">
             <center><h1 class="arrival_text">Modificar Producto</h1></center><br><br><br>
+            <form method="post">
+               {% csrf_token %}
             <div class="row">
                <div class="col-sm-6 col-lg-4">
                   <label class="forms_text" >Nombre</label>
-                  <input required type="text"  name="Enter Your email" value="{{producto.nombre_producto}}"><br><br><br>
+                  {{formulario.nombre_producto}}<br><br>
                   <label class="forms_text">Gramos por persona</label>
-                  <input required type="text"  name="Enter Your email">
+                 <!--  <input required type="text"  name="Enter Your email" value="{{producto.gramos_persona}}">-->{{formulario.gramos_persona}}
                </div><br><br><br>
             </div><br>
+
             <div class="row">
+
             <label class="subti_text">IPC por meses</label><br><br><br>
             <div class="col-sm-6 col-lg-4">
-                  <label class="forms_text" >Enero</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Abril</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Julio</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Octubre</label>
-                  <input required type="text"  name="Enter Your email" >
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                  <label class="forms_text" >Febrero</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Mayo</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Agosto</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Noviembre</label>
-                  <input required type="text"  name="Enter Your email" >
-            </div>
-               <div class="col-sm-6 col-lg-4">
-                  <label class="forms_text" >Marzo</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Junio</label>
-                  <input required type="text"  name="Enter Your email"><br><br>
-                  <label class="forms_text" >Septiembre</label>
-                  <input required type="text"  name="Enter Your email" ><br><br>
-                  <label class="forms_text" >Diciembre</label>
-                  <input required type="text"  name="Enter Your email" >
-            </div>
+               
+               {% for mes in listaMeses%}
+                 
+                  <div class="col-sm-12 col-lg-8">
+                  <label class="forms_text" >{{mes.nombre_mes}}</label>
+                  <input required type="text"  name="Enter Your email" value="{{mes.indice_precio}}"><br><br>
+                  </div>
 
-
+               {% endfor %}
             </div>
-            <div class="paly_bt"><a href="#">Guardar</a></div>
+            
+            <div class="paly_bt"><a href="{% url 'ListaDeProductosAdmin' anio=2018 %}"><button type="submit" style="background-color: rgba(241, 131, 131, 0);">Guardar</button></a></div>
+         </form>
          </div>
+         
       </div>
       {% endblock %}
       <!-- arrival section end -->
